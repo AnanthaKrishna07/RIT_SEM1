@@ -1,2 +1,3 @@
-def pali(strr): 
-return strr==strr[::-1] 
+def ispal(s):
+        s=str(s)
+        return s==s[::-1]
