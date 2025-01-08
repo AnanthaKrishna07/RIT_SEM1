@@ -1,4 +1,4 @@
- a,b =0,1 
+a,b =0,1 
 num = int(input("Enter the limit: ")) 
 if num>0: 
     print("Fibonacci series:") 
