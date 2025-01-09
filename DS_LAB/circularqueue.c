@@ -1,109 +1,102 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10
-void display(int MAX);
+
+#define size 10
 int front=-1;
 int rear=-1;
-int CQueue[SIZE];
+int cqueue[size];
 
-int isFull(int MAX){
-        return (rear+1)%MAX==front;
+int isfull(int max){
+    return (rear+1)%max==front;
 }
-
-int isEmpty(){
-        return front==-1;
+int isempty(){
+    return front==-1;
 }
-
-void enque(int value,int MAX){
-        if(isFull(MAX)){
-                printf("Queue is Full!!\n");
-        }
-        else if(front==-1 && rear==-1){
-                front=0;
-                rear=0;
-                CQueue[rear]=value;
-        }
-        else{
-                rear=(rear+1)%MAX;
-                CQueue[rear]=value;
-                display(MAX);
-        }
-}
-
-void deque(int MAX){
-        if(isEmpty()){
-                printf("Queue is Empty!!\n");
-        }
-        else if(rear==front){
-                printf("%d is Deleted!!",CQueue[front]);
-                rear=-1;
-                front=-1;
-        }
-        else{
-                printf("%d is Deleted!!",CQueue[front]);
-                front=(front+1)%MAX;
-        }
-}
-
-void display(int MAX){
-    if(isEmpty()){
-        printf("Queue is empty!!\n");
+void display(int max){
+    if(isempty()){
+        printf("circular queue is empty");
     }
     else{
         printf("Queue elements are: ");
-        int i = front;
-        while(i != rear){
-            printf("%d -> ", CQueue[i]);
-            i = (i + 1) % MAX;
+        int i=front;
+        while(i!=rear){
+            printf("%d->",cqueue[i]);
+            i=(i+1)%max;    
         }
-        printf("%d\n", CQueue[rear]);
+        printf("%d",cqueue[rear]);
     }
 }
-
+void enque(int value,int max){
+    if(isfull(max)){
+        printf("circular Queue is full");
+    }
+    else if(front==-1 && rear==-1){
+        front=0;
+        rear=0;
+        cqueue[rear]=value;
+    }
+    else{
+        rear=(rear+1)%max;
+        cqueue[rear]=value;
+        display(max);
+    }
+}
+void deque(int max){
+    if(isempty()){
+        printf("circular queue is empty");
+    }
+    else if(front==rear){
+        printf("%d is deleted..",cqueue[rear]);
+        front=-1;
+        rear=-1;
+    }else{
+         printf("%d is deleted..",cqueue[front]); 
+         front=(front+1)%max;
+    }
+}
 void search(int value){
-        if(isEmpty()){
-                printf("Queue is Empty!!");
+    if(isempty()){
+        printf("circular queue is empty");
+    }
+    else{
+        int pos=0;
+        int i=front;
+        while(i!=rear){
+            if(cqueue[i]==value){
+                printf("%d is found at %d",value,pos);
+            }else{
+                i=i+1;
+                pos=pos+1;
+            }
         }
-        else{
-                int pos=1;
-                int i=front;
-                while(i!=rear){
-                        if(CQueue[i]==value){
-                                printf("%d found at %d th position!",value,pos);
-                                return;
-                        }
-                        else{
-                                i=i+1;
-                                pos=pos+1;
-                        }
-                }
-                if(CQueue[rear]==value){
-                        printf("%d found at %d th position!",value,pos);
-                }
-                else{
-                        printf("%d not found!!",value);
-                }
+        if(cqueue[rear]==value){
+            printf("%d is found at %d",value,pos);
+        }else{
+        printf("Element not found");
         }
+    }
+    
 }
 
-void main(){
-        int ch,value,MAX;
-        printf("Enter the size of Queue:");
-        scanf("%d",&MAX);
-        do{
-                printf("\n 1.Enque \n 2.Deque \n 3.Display \n 4.Search \n 5.exit \n Enter Your Choice: ");
-                scanf("%d",&ch);
-                switch(ch){
+
+int main(){
+    int max,ch,value;
+    printf("Enter the size of circular Queue: ");
+    scanf("%d",&max);
+    do{
+        printf(" \n 1.Enque \n 2.Deque \n 3.Display \n 4.Search \n 5.exit \n Enter Your Choice: ");
+        scanf("%d",&ch);
+         switch(ch){
                         case 1:
                                 printf("Enter the value to be Inserted: ");
                                 scanf("%d",&value);
-                                enque(value,MAX);
+                                enque(value,max);
                                 break;
                         case 2:
-                                deque(MAX);
+                                deque(max);
                                 break;
                         case 3:
-                                display(MAX);
+                                display(max);
                                 break;
                         case 4:
                                 printf("Enter the value to Search: ");
@@ -114,6 +107,7 @@ void main(){
                                 printf("Exiting the program..!!");
                                 exit(0);
                         }
-        }
-        while(1);
+        
+    }while(1);
+    
 }
