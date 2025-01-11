@@ -1,0 +1,15 @@
+p{ 
+ color:white; 
+ background-color:blue; 
+ padding:10px; 
+} 
+.highlight{ 
+ color:green; 
+ background-color:yellow; 
+ padding:10px; 
+} 
+#special{ 
+ color:blue; 
+ background-color:red; 
+ padding:10px; 
+ } 
