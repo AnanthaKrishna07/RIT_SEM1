@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script>
+            function check(){
+                if(document.getElementById("name").value==""){
+                    alert("Enter name");
+                }
+                if(document.getElementById("username").value==""){
+                    alert("Enter username");
+                }
+                if((document.getElementById("pass").value) != (document.getElementById("cpass").value)){
+                    alert("incorrect password password");
+                }
+                if((document.getElementById('pass').value) != 
+(document.getElementById('cpass').value)) 
+alert("Password does not match"); 
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+        <h3>REGISTRATION FORM</h3>
+        Name<input type="text" id="name"><br><br>
+        username<input type="text" id="username"><br><br>
+        email<input type="text" id="email"><br><br>
+        password<input type="text" id="pass"><br><br>
+        confirm password<input type="text" id="cpass"><br><br>
+        <input type="submit" id="submit" onclick="check()">
+        </form>
+    </body>
+</html>
