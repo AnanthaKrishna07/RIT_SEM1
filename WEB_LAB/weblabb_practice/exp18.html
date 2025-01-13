@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function exam(event) {
+            event.preventDefault(); // Prevent form submission
+            let score = 0;
+
+            // Check answers
+            if (document.f1.n1[0].checked) score += 1;
+            if (document.f1.n2[0].checked) score += 1;
+
+            alert("Your score is " + score + "/2");
+        }
+    </script>
+</head>
+<body>
+    <h2>Online Exam</h2>
+    <form name="f1" onsubmit="exam(event)">
+        <h3>Spelling of 2</h3>
+        <input type="radio" name="n1" value="two"> Two<br>
+        <input type="radio" name="n1" value="tow"> Tow<br>
+
+        <h3>Which is an odd number?</h3>
+        <input type="radio" name="n2" value="1"> 1<br>
+        <input type="radio" name="n2" value="2"> 2<br>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
