@@ -1,3 +1,8 @@
+'''Define a class to represent a bank account. Include the following details like name of the
+depositor, account number, type of account, balance amount in the account. Write methods to
+assign initial values, to deposit an amount, withdraw an amount after checking the balance, to
+display details such as name, account number, account type and balance.'''
+
 class BankAccount:
     def __init__(self, name, account_number, balance=0):
         self.name = name
